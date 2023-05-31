@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if(!isset($_SESSION['name'])){
+    if(!isset($_SESSION['username'])){
         header("location:index.php");
     }
 ?>
@@ -54,6 +54,15 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Dashboard
                             </a>
+                            <?php
+                                if($_SESSION['role']=='admin'){ ?>
+                                    <a class="nav-link" href="product.php">
+                                    <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                     Product
+                                     </a>
+                            <?php    }
+                            ?>
+                            
                             <div class="sb-sidenav-menu-heading">Interface</div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>

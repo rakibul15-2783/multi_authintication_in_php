@@ -19,11 +19,13 @@
         }
         else{
             $this->con =new mysqli("localhost","root","","php_practice");
-            $qur ="SELECT * FROM tbl_users WHERE name='$username' AND password='$password'";
+            $qur ="SELECT * FROM tbl_users WHERE (name='$username' OR phone='$username' OR email='$username') AND password='$password'";
             $result = $this->con->query($qur);
             if($result->num_rows > 0){
+                $data = $result->fetch_assoc();
                 session_start();
-                $_SESSION['name']="rakib";
+                $_SESSION['username']=$data['name'];
+                $_SESSION['role']=$data['role'];
                 header("location:dashboard.php");
             }
             else{
